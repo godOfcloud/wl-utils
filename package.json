@@ -1,0 +1,42 @@
+{
+  "name": "wl-utils",
+  "version": "1.0.0",
+  "description": "让编码变得简单",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc -p .",
+    "style": "run-s style:**",
+    "style:prettier": "prettier --write \"src/**/*.ts\"",
+    "style:lint": "tslint -p tsconfig.json -c tslint.json"
+  },
+  "keywords": [
+    "tools"
+  ],
+  "author": "zhangyun",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.14.9",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.0",
+    "ts-node-dev": "^1.0.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.1.2",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn style",
+      "commit-msg": "validate-commit-msg"
+    }
+  }
+}
